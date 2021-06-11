@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    certmanager.k8s.io/issuer: letsencrypt-prod
+    certmanager.k8s.io/acme-challenge-type: http01
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Referrer-Policy: no-referrer";
+      more_set_headers "X-Frame-Options: DENY";
+    kubernetes.io/tls-acme: "true"
+  name: ludum48
+spec:
+  rules:
+  - host: bloaf.ca
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: ludum48-frontend
+          servicePort: 80
+  tls:
+  - hosts:
+    - bloaf.ca
+    secretName: bloaf-tls

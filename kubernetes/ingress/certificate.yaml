@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  labels:
+    app: bloaf
+    chart: bloaf-0.1.0
+    release: bloaf
+  name: bloaf-tls
+spec:
+  acme:
+    config:
+    - domains:
+      - bloaf.ca
+      http01: {}
+  dnsNames:
+  - bloaf.ca
+  issuerRef:
+    kind: Issuer
+    name: letsencrypt-prod
+  secretName: bloaf-tls

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ludum48-frontend
+  labels:
+    app: ludum48-frontend
+spec:
+  selector:
+    matchLabels:
+      app: ludum48-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ludum48-frontend
+    spec:
+      containers:
+      - imagePullPolicy: Always
+        name: frontend
+        image: ghcr.io/addyvan/gmtk-2021:latest
+        env:
+        - name: PORT
+          value: "80"
+        ports:
+        - name: http
+          containerPort: 80
