@@ -2,7 +2,7 @@
  * The entrypoint to the application
  */
 
-import "./index.scss";
+import "./index.css";
 import React from 'react';
 import ReactDOM from 'react-dom';
 

@@ -6,7 +6,7 @@ import {initPreviewState} from "../states/PreviewState";
 import {initScoreScreenState} from "../states/ScoreScreenState";
 
 let ASSETS = [
-    "floor.glb",
+    // "floor.glb",
     "level1.glb"
 ];
 

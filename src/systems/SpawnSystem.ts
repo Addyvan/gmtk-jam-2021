@@ -23,8 +23,8 @@ const spawn = ({dt, entities} : any) => {
     if (Math.random() > 0.99) {
         let e = ecs.CreateEntity();
         let geometry : any;
-        if (Math.random() < 0.5){  
-            geometry = new THREE.SphereGeometry(Math.random() + 0.5);
+        if (Math.random() < 1.1){  
+            geometry = new THREE.SphereGeometry(0.5);
         } else {
             geometry = new THREE.BoxGeometry();
         }
@@ -33,6 +33,10 @@ const spawn = ({dt, entities} : any) => {
         const shape = new THREE.Mesh( geometry, material );
 
         shape.position.set( (Math.random() -0.5) * 20, 0.5 +  Math.random(), Math.random() * 10 - 80);
+        
+        
+        shape.layers.enable( 1 );
+        
 
         bl.scene.add(shape);
 
