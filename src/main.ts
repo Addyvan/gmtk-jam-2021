@@ -6,9 +6,12 @@ import MovementSystem from "./systems/MovementSystem";
 import Loader from "./loader";
 import { sleep } from "./utils";
 
+import player from "./player";
+
 let ASSETS = [
     "floor.glb"
 ];
+
 
 async function main() {
 
@@ -19,9 +22,6 @@ async function main() {
     for (let i = 0; i < ASSETS.length; i++) {
         loader.load(ASSETS[i]);
     }
-
-    
-    console.log(loader);
 
     while (true) {
 
@@ -46,21 +46,17 @@ async function main() {
         bl.scene.add(loader.models[ASSETS[i]].gltf.scene);
     }
 
-    console.log("yoyoyo");
-
     bl.camera.position.z = 10;
     bl.camera.position.y = 7.5;
 
-    let player = ecs.CreateEntity();
-    let g = new THREE.Group();
     let e = ecs.CreateEntity();
 
     const geometry = new THREE.BoxGeometry();
     const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xff0000 } );
     const cube = new THREE.Mesh( geometry, material );
     
-    g.add(cube);
-    bl.scene.add(g);
+    player.add(cube);
+    bl.scene.add(player);
 
     cube.position.set(0, 0.5, 0);
 
@@ -73,14 +69,28 @@ async function main() {
     const ambientLight = new THREE.AmbientLight( 0xffffff, 1.25 ); // soft white light
     bl.scene.add( ambientLight );
 
-
-
     ecs.AddComponent(e, "shape", cube);
 
-    ecs.AddComponent(player, "player", g);
-    
+    addShape();
+    addShape();
+    addShape();
+    addShape();
+    addShape();
 
     update();
+}
+
+function addShape() {
+    let e = ecs.CreateEntity();
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xff0000 } );
+    const cube = new THREE.Mesh( geometry, material );
+
+    cube.position.set(Math.random() * 10 - 2.5, 0.5 +  Math.random(), Math.random() * 10 - 2.5);
+
+    bl.scene.add(cube);
+
+    ecs.AddComponent(e, "shape", cube);
 }
 
 function update() {
