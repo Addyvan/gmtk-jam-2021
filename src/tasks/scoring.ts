@@ -12,16 +12,20 @@ function rotate(pos:THREE.Vector3,theta:number){
 
 function scoring(voxels:Array<Array<number>>) : number {
     let fscore: number = 0;
-    let score: number = 0;
     for (let nrot=0;nrot<36;nrot++){
+        let score: number = 0;
         for (let i=0; i< voxels.length; i++){
             let voxel = new THREE.Vector3(voxels[i][0],voxels[i][1],voxels[i][2]);
             for (let j=0; j<player.children.length; j++){
                 let shape: any = player.children[j]
-                let box = new THREE.Box3();
-                shape.position = rotate(shape.position,10);
+                const box = new THREE.Box3();
+                let p1 = shape.position.clone();
+                let p2 = rotate(p1,10);
+                shape.position.x = p2.x;
+                shape.position.y = p2.y;
+                shape.position.z = p2.z;
                 shape.geometry.computeBoundingBox();
-                box.copy(shape.geometry.BoundingBox).applyMatrix4(shape.matrixWorld);
+                box.copy(shape.geometry.boundingBox).applyMatrix4(shape.matrixWorld);
                 score += Number(box.containsPoint(voxel));
             }
         }
@@ -30,7 +34,6 @@ function scoring(voxels:Array<Array<number>>) : number {
         }
     }
     fscore /= voxels.length;
-    fscore *= 100;
     return fscore;
 }
 

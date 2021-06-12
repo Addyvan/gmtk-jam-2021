@@ -7,6 +7,9 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import createLights from "../tasks/createLights";
 import renderText from "../tasks/renderText";
 
+import level1 from "../systems/level1"
+import scoring from "../tasks/scoring"
+
 let scene : THREE.Scene;
 let camera : THREE.PerspectiveCamera;
 let controls : OrbitControls;
@@ -124,7 +127,7 @@ const transitionIn = () => {
     if (elem !== undefined && elem !== null) {
         elem.style.display = "block";
     }
-
+    console.log(scoring(level1.voxels));
 }
 
 const transitionOut = () => {
