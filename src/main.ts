@@ -71,10 +71,10 @@ async function main() {
 
     ecs.AddComponent(e, "shape", cube);
 
-    addShape();
-    addShape();
-    addShape();
-    addShape();
+    //addShape();
+    //addShape();
+    //addShape();
+    //addShape();
     addShape();
 
     update();
