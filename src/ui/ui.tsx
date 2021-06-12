@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./ui.scss";
+import "./ui.css";
 
 import GameHUD from "./GameHUD";
 import PreviewHUD from "./PreviewHUD";
