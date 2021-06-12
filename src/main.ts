@@ -3,6 +3,8 @@ import bl from "blengine";
 import ecs, {Signature, System} from "blecs";
 import CollisionSystem from "./systems/CollisionSystem";
 import MovementSystem from "./systems/MovementSystem";
+import ShapeMovementSystem from "./systems/ShapeMovementSystem";
+import SpawnSystem from "./systems/SpawnSystem";
 import Loader from "./loader";
 import { sleep } from "./utils";
 
@@ -69,8 +71,6 @@ async function main() {
     const ambientLight = new THREE.AmbientLight( 0xffffff, 1.25 ); // soft white light
     bl.scene.add( ambientLight );
 
-    addShape();
-
     update();
 }
 
@@ -95,7 +95,9 @@ function update() {
     
     MovementSystem.update(dt);
     CollisionSystem.update(dt);
-
+    ShapeMovementSystem.update(dt);
+    SpawnSystem.update(dt);
+    
     bl.renderer.render(bl.scene, bl.camera);
 
 }
