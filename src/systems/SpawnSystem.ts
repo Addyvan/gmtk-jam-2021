@@ -17,24 +17,25 @@ import ecs, {Signature, System} from "blecs";
 // ]
 
 // speed component might be nice
-
+let geometry : any ;
 const spawn = ({dt, entities} : any) => {
     
-
-
     // 2% spawn rate per frame
     if (Math.random() > 0.99) {
-
         let e = ecs.CreateEntity();
-        const geometry = new THREE.BoxGeometry();
+        if (Math.random() < 0.5){  
+            geometry = new THREE.SphereGeometry(0.5);
+        } else {
+            geometry = new THREE.BoxGeometry();
+        }
         const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xffffff } );
-        const cube = new THREE.Mesh( geometry, material );
+        const shape = new THREE.Mesh( geometry, material );
 
-        cube.position.set( (Math.random() -0.5) * 20, 0.5 +  Math.random(), Math.random() * 10 - 80);
+        shape.position.set( (Math.random() -0.5) * 20, 0.5 +  Math.random(), Math.random() * 10 - 80);
 
-        bl.scene.add(cube);
+        bl.scene.add(shape);
 
-        ecs.AddComponent(e, "shape", cube);
+        ecs.AddComponent(e, "shape", shape);
     }
 
 }
