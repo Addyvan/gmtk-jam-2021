@@ -2,6 +2,8 @@ import * as THREE from "three";
 import Level from "./levelInterface";
 
 const level1 : Level = {
+    passScore: 1,
+    time: 20,
     shapes: [ 
         {
             type: "cube",
@@ -11,6 +13,7 @@ const level1 : Level = {
             },
             location: new THREE.Vector3(0,1,-40),
             time: 1,
+            speed: 1,
             spawned: false
         },
         {
@@ -21,6 +24,7 @@ const level1 : Level = {
             },
             location: new THREE.Vector3(0,1,-40),
             time: 4,
+            speed: 2,
             spawned: false
         },
         {
@@ -31,6 +35,7 @@ const level1 : Level = {
             },
             location: new THREE.Vector3(0,1,-40),
             time: 10,
+            speed: 3,
             spawned: false
         },
     ],

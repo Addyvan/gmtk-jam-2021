@@ -15,12 +15,9 @@ let controls : OrbitControls;
 const initPreviewState = () => {
     camera = bl.camera.clone();
 
-    camera.position.set(0, 30, 45);
+    camera.position.set(0, 7.5, 10);
     camera.lookAt(0,0,0);
     scene = new THREE.Scene();
-
-    loader.models["level1.glb"].gltf.scene.scale.set(6,6,6);
-    scene.add(loader.models["level1.glb"].gltf.scene);
 
     controls = new OrbitControls( camera, bl.renderer.domElement );
 
@@ -48,7 +45,9 @@ const transitionIn = () => {
         elem.style.display = "block";
     }
 
-    gameManager.timer = new Timer(2);
+    gameManager.timer = new Timer(1);
+
+    scene.add(gameManager.currentReference);
 }
 
 const transitionOut = () => {
@@ -57,6 +56,8 @@ const transitionOut = () => {
     if (elem !== undefined && elem !== null) {
         elem.style.display = "none";
     }
+
+    scene.remove(gameManager.currentReference);
 }
 
 const PreviewState = new State(

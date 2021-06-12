@@ -38,7 +38,9 @@ const spawn = ({dt, entities} : any) => {
             shape.position.set( s.location.x, s.location.y, s.location.z );
             
             bl.scene.add(shape);
-            ecs.AddComponent(ecs.CreateEntity(), "shape", shape);
+            let e = ecs.CreateEntity();
+            ecs.AddComponent(e, "shape", shape);
+            ecs.AddComponent(e, "params", {speed: s.speed});
 
         }
         

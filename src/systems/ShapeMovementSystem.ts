@@ -7,8 +7,9 @@ const shapeMovement = ({dt, entities} : any) => {
         
     entities.forEach((entityID : number) => {
         let shape = ecs.GetComponent(entityID, "shape");
+        let params = ecs.GetComponent(entityID, "params");
         
-        shape.position.z += dt * SHAPE_MOVE_SPEED;
+        shape.position.z += dt * SHAPE_MOVE_SPEED * params.speed;
 
         if (shape.position.z > 10) {
             ecs.RemoveComponent(entityID, "shape");

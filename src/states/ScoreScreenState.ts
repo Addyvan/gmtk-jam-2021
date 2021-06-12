@@ -9,11 +9,14 @@ import renderText from "../tasks/renderText";
 
 import level1 from "../levels/level1";
 import scoring from "../tasks/scoring";
+import gameManager, {Timer} from "../GameManager";
+
+import player from "../player";
 
 let scene : THREE.Scene;
 let camera : THREE.PerspectiveCamera;
 let controls : OrbitControls;
-let g1 : any;
+let g2 : any =  new THREE.Group();
 let container : any = {};
 
 const initScoreScreenState = () => {
@@ -28,30 +31,20 @@ const initScoreScreenState = () => {
     camera.position.set(0, 20, 20);
     scene = new THREE.Scene();
 
-    let modelA = loader.models["level1.glb"].gltf.scene.clone();
-    modelA.scale.set(3,3,3);
-    scene.add(modelA);
-    modelA.position.set(-10, 0, 0);
-
-    let modelB = loader.models["level1.glb"].gltf.scene.clone();
-    modelB.scale.set(3,3,3);
-
-    modelB.position.set(10, 0, 0);
-    scene.add(modelB);
-
-
     controls = new OrbitControls( camera, bl.renderer.domElement );
 
     createLights(scene);
-
-    g1 = new THREE.Group();
-    renderText("Your Model", new THREE.Vector3(-10, 8, 0), 0.01, scene, container, "t1");
-    renderText("Reference Model", new THREE.Vector3(10, 8, 0), 0.01, scene, container, "t2");
     
-    scene.add(g1);
+    renderText("Your Model", new THREE.Vector3(-10, 8, 0), 0.01, g2, container, "t1");
+    renderText("Reference Model", new THREE.Vector3(10, 8, 0), 0.01, g2, container, "t2");
+    
+    scene.add(g2);
 }
 
 const update = (dt : number) => {
+
+    // g2.rotation.y += dt / 5;
+
     if (container["t1"] !== undefined) {
         // container["t1"].lookAt(camera);
         let dirVec = new THREE.Vector3(0, -1, 0);
@@ -127,7 +120,29 @@ const transitionIn = () => {
     if (elem !== undefined && elem !== null) {
         elem.style.display = "block";
     }
-    console.log(scoring(level1.reference));
+
+    scene.add(gameManager.currentReference);
+
+    g2 = new THREE.Group();
+    // let modelA = loader.models["level1.glb"].gltf.scene.clone();
+    // modelA.scale.set(3,3,3);
+    player.position.set(-10, 0, 0);
+    g2.add(player);
+    
+
+    let modelB = loader.models["level1.glb"].gltf.scene.clone();
+    modelB.scale.set(3,3,3);
+
+    gameManager.currentReference.position.set(10, 0, 0);
+    g2.add(gameManager.currentReference);
+
+    scene.add(g2);
+
+    let scoreElem = document.getElementById("score-number");
+    if (scoreElem !== undefined && scoreElem !== null) {
+        scoreElem.innerText = scoring(level1.reference).toString();
+    }
+        
 }
 
 const transitionOut = () => {
@@ -136,6 +151,10 @@ const transitionOut = () => {
     if (elem !== undefined && elem !== null) {
         elem.style.display = "none";
     }
+    scene.remove(g2);
+
+    // TODO: remove player stuff
+    //player = new THREE.Group();
 }
 
 const ScoreScreenState = new State(

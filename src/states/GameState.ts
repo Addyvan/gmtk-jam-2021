@@ -84,7 +84,7 @@ const transitionIn = () => {
     if (elem !== undefined && elem !== null) {
         elem.style.display = "block";
     }
-    gameManager.timer = new Timer(1);
+    gameManager.timer = new Timer(gameManager.currentLevel.time);
 
 }
 

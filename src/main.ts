@@ -36,6 +36,7 @@ async function main() {
 
     gameManager.setState("game", GameState);
     gameManager.setState("preview", PreviewState);
+    PreviewState.transitionIn();
     gameManager.setState("score", ScoreScreenState);
 
     update();

@@ -5,6 +5,7 @@ import State from "./State";
 import {
     level1
 } from "./levels";
+import voxels2group from "./levels/voxels2group";
 import Level from "./levels/levelInterface";
 
 export class Timer {
@@ -30,8 +31,6 @@ export class Timer {
 
 }
 
-
-
 class GameManager {
 
     gameState : string;
@@ -39,6 +38,7 @@ class GameManager {
     timer : Timer;
     
     currentLevel : Level;
+    currentReference : any;
 
     constructor() {
         this.gameState = "preview";
@@ -48,6 +48,9 @@ class GameManager {
         this.states = {}
 
         this.currentLevel = level1;
+        this.currentReference = voxels2group(level1.reference);
+
+    
     }
 
     setState(name : string, state : State) {
@@ -65,6 +68,10 @@ class GameManager {
         this.states[to].transitionIn();
 
         this.gameState = to;
+    }
+
+    setNextLevel() : void {
+
     }
 
     update(dt : number) {
