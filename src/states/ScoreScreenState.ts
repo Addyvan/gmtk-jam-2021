@@ -124,6 +124,7 @@ const transitionIn = () => {
     if (elem !== undefined && elem !== null) {
         elem.style.display = "block";
     }
+
 }
 
 const transitionOut = () => {
