@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+
+  # basic
+  shell: 
+    image: local-dev
+    working_dir: /app
+    entrypoint: bash
+    stdin_open: true
+    tty: true
+    build:
+        dockerfile: Dockerfile.dev
+        context: .
+    volumes:
+    - ./:/app
