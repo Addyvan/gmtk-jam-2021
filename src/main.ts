@@ -69,12 +69,6 @@ async function main() {
     const ambientLight = new THREE.AmbientLight( 0xffffff, 1.25 ); // soft white light
     bl.scene.add( ambientLight );
 
-    ecs.AddComponent(e, "shape", cube);
-
-    //addShape();
-    //addShape();
-    //addShape();
-    //addShape();
     addShape();
 
     update();
@@ -99,8 +93,8 @@ function update() {
     let dt : number = bl.clock.getDelta();
 
     
-    CollisionSystem.update(dt);
     MovementSystem.update(dt);
+    CollisionSystem.update(dt);
 
     bl.renderer.render(bl.scene, bl.camera);
 
