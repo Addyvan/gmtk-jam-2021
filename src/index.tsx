@@ -2,7 +2,7 @@
  * The entrypoint to the application
  */
 
-import "./index.css";
+import "./index.scss";
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -12,11 +12,20 @@ import "./registerComponents";
 
 import main from "./main";
 
+import UI from "./ui/ui";
+
 main();
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppContainer />
+    <div className="parent">
+      <div id="ui">
+        <UI />
+      </div>
+      <div id="game-container">
+        <AppContainer />
+      </div>
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

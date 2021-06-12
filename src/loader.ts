@@ -38,4 +38,6 @@ class Loader {
 
 }
 
-export default Loader;
+const loader : Loader = new Loader();
+
+export default loader;
