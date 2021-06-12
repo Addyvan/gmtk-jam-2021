@@ -9,11 +9,10 @@ COLORS:
 
 designed to mirror: https://threejs.org/docs/#manual/en/introduction/Creating-a-scene
 
-## Running the example app
-
-This assumes a recent version of nodejs is installed (`v15.8.0` was used for to create this demo). 
+## Running the app
 
 ```bash
-npm install
-npm start
+docker-compose run -p 3000:3000 shell
+$ npm install
+$ npm start
 ```
