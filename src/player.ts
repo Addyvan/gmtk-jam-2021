@@ -5,9 +5,9 @@ const player = new THREE.Group();
 const playerVoxelGrid : any = [];
 
 for (let i = 0; i < 16; i++) {
-    playerVoxelGrid.append([]);
+    playerVoxelGrid.push([]);
     for (let j = 0; j < 16; j++) {
-        playerVoxelGrid[i].append([]);
+        playerVoxelGrid[i].push([]);
         for (let k = 0; k < 16; k++) {
             playerVoxelGrid[i][j] = 0;
         }
