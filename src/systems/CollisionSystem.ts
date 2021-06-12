@@ -9,6 +9,7 @@ import box_sphere from "../physics/box-sphere";
 import sphere_sphere, {Sphere} from "../physics/sphere-sphere";
 import box_box from "../physics/box-box";
 
+import {h} from "./MovementSystem";
 
 let IS_FIRST = true;
 
@@ -90,8 +91,10 @@ const collisions = ({dt, entities} : any) => {
 
                     shapeB.position.set(pos.x,pos.y,pos.z);
                     
-
                     player.add(shapeB);
+
+                    // after we glue we need to check which object is now the lowest
+
                 } else {
                     IS_FIRST = false;
                 }

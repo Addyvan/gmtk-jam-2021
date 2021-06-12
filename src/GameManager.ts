@@ -2,6 +2,11 @@ import * as THREE from "three";
 import bl from "blengine";
 import State from "./State";
 
+import {
+    level1
+} from "./levels";
+import Level from "./levels/levelInterface";
+
 export class Timer {
 
     time : number;
@@ -33,12 +38,16 @@ class GameManager {
     states : any;
     timer : Timer;
     
+    currentLevel : Level;
+
     constructor() {
         this.gameState = "preview";
 
         this.timer = new Timer(1);
 
         this.states = {}
+
+        this.currentLevel = level1;
     }
 
     setState(name : string, state : State) {

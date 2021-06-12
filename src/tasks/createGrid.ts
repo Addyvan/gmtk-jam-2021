@@ -5,7 +5,7 @@ function createGrid( scene : THREE.Scene) {
     const material = new THREE.LineBasicMaterial( { 
         vertexColors: true, 
         morphTargets: true,
-        linewidth: 1.5,
+        linewidth: 2.5,
         fog: true
     } );
 
@@ -15,16 +15,16 @@ function createGrid( scene : THREE.Scene) {
 
         const positions = [];
         const colors = [];
-        positions.push( 1, 0.5, 50 );
-        positions.push( 1, 0.5, 40 );
-        positions.push( 1, 0.5, 30 );
-        positions.push( 1, 0.5, 20 );
-        positions.push( 1, 0.5, 10 );
-        positions.push( 1, 0.5, 0 );
-        positions.push( 1, 0.5, -10 );
-        positions.push( 1, 0.5, -20 );
-        positions.push( 1, 0.5, -30 );
-        positions.push( 1, 0.5, -32.5 );
+        positions.push( 1, 0, 50 );
+        positions.push( 1, 0, 40 );
+        positions.push( 1, 0, 30 );
+        positions.push( 1, 0, 20 );
+        positions.push( 1, 0, 10 );
+        positions.push( 1, 0, 0 );
+        positions.push( 1, 0, -10 );
+        positions.push( 1, 0, -20 );
+        positions.push( 1, 0, -30 );
+        positions.push( 1, 0, -32.5 );
 
         for (let k = 0; k < 10; k++) {
 
@@ -38,7 +38,6 @@ function createGrid( scene : THREE.Scene) {
                 colors.push(159);
             }
             
-
         }
 
         geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
@@ -56,8 +55,8 @@ function createGrid( scene : THREE.Scene) {
 
         const positions = [];
         const colors = [];
-        positions.push( -9, 0.5, 0 );
-        positions.push( 9, 0.5, 0 );
+        positions.push( -9, 0, 0 );
+        positions.push( 9, 0, 0 );
         
         
 

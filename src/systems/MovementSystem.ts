@@ -4,6 +4,10 @@ import * as THREE from "three";
 
 import player from "../player";
 
+export const h = {
+    desiredHeight: 0.5
+}
+
 const SPEED = 5;
 const GRAVITY = -60;
 let IS_JUMPING = true;
@@ -68,6 +72,10 @@ const movement = ({dt, entities} : any) => {
             velocity.y = 20;
             IS_JUMPING = true;
         }
+    }
+
+    if (!IS_JUMPING) {
+        player.position.y = h.desiredHeight;
     }
     
     player.position.x += velocity.x * dt;
