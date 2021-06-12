@@ -28,11 +28,13 @@ const collisions = ({dt, entities} : any) => {
 
                 if (!IS_FIRST) {
                     ecs.RemoveComponent(entityBID, "shape");
-                    
-                    shapeB.position.set(0,0,0);
+                    let pos = new THREE.Vector3(
+                        shapeB.position.x-player.position.x,
+                        shapeB.position.y-player.position.y,
+                        shapeB.position.z-player.position.z,)
+                    console.log(pos)
+                    shapeB.position.set(pos.x,pos.y,pos.z);
                     player.add(shapeB);
-                    console.log(player);
-
                 } else {
                     IS_FIRST = false;
                 }
