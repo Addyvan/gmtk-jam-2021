@@ -40,7 +40,7 @@ const collisions = ({dt, entities} : any) => {
 
                 const sphereA : Sphere = {
                     radius: shapeA.geometry.parameters.radius,
-                    center: shapeA.position.clone().add(player.position)
+                    center: groupToWorld(shapeA.position)
                 };
 
                 const sphereB : Sphere = {
@@ -74,11 +74,11 @@ const collisions = ({dt, entities} : any) => {
 
                     s = {
                         radius: shapeA.geometry.parameters.radius,
-                        center: shapeA.position.clone().add(player.position)
+                        center: groupToWorld(shapeA.position)
                     }
                 }
 
-                collided = box_sphere(box, s)
+                collided = box_sphere(box, s);
 
             }
             
@@ -87,7 +87,10 @@ const collisions = ({dt, entities} : any) => {
                     ecs.RemoveComponent(entityBID, "shape");
                     let pos = worldToGroup(shapeB.position); 
                     shapeB.material.color = shapeA.material.color
+
                     shapeB.position.set(pos.x,pos.y,pos.z);
+                    
+
                     player.add(shapeB);
                 } else {
                     IS_FIRST = false;

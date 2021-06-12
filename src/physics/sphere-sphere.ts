@@ -8,7 +8,6 @@ export interface Sphere {
 function sphere_sphere(sphereA : Sphere, sphereB : Sphere) : boolean {
     
     let d = sphereA.center.distanceTo(sphereB.center);
-    
 
     return (d < (sphereA.radius + sphereB.radius));
 }

@@ -99,7 +99,7 @@ function renderText(t : string, p : THREE.Vector3, scale : number, scene : THREE
 
         // onError callback
         function ( err ) {
-            console.log( 'An error happened' );
+            console.error( 'An error happened', err );
         }
     );
 }

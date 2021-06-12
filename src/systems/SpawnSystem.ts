@@ -11,14 +11,20 @@ const spawn = ({dt, entities} : any) => {
         let spawn = level1.shapes.pop()
         console.log(spawn)
         let geometry : any;
+
         if (spawn?.type === "sphere"){  
             geometry = new THREE.SphereGeometry(spawn?.radius);
+
         } else {
             geometry = new THREE.BoxGeometry(spawn?.width,spawn?.height);
         }
         const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xffffff } );
         const shape = new THREE.Mesh( geometry, material );
         shape.position.set( (Math.random() -0.5) * 20, 0.5 +  Math.random(), Math.random() * 10 - 80);
+        
+        
+        shape.layers.enable( 1 );
+
         bl.scene.add(shape);
         ecs.AddComponent(e, "shape", shape);
     }

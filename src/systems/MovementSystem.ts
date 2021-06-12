@@ -5,7 +5,7 @@ import * as THREE from "three";
 import player from "../player";
 
 const SPEED = 5;
-const GRAVITY = -9.8;
+const GRAVITY = -60;
 let IS_JUMPING = true;
 
 let velocity = new THREE.Vector3(0, 0, 0);
@@ -29,9 +29,17 @@ const movement = ({dt, entities} : any) => {
         velocity.z = SPEED;
     }
 
+    if (bl.controls.GetKey("e")) {
+        player.rotation.y -= dt * SPEED;
+    }
+
+    if (bl.controls.GetKey("q")) {
+        player.rotation.y += dt * SPEED;
+    }
+
     if (bl.controls.GetKey(" ")) {
         if ( !(player.position.y > 0 ) && !(IS_JUMPING) ) {
-            velocity.y = 5;
+            velocity.y = 20;
             IS_JUMPING = true;
         }
     }
