@@ -3,6 +3,7 @@ import ecs, {Signature, System} from "blecs";
 import * as THREE from "three";
 
 import player from "../player";
+import { LerpAngle } from "../utils";
 
 export const h = {
     desiredHeight: 0.5
@@ -10,7 +11,9 @@ export const h = {
 
 const SPEED = 5;
 const GRAVITY = -60;
-let IS_JUMPING = true;
+const ROTATION_SPEED = 15;
+let is_rotating = false;
+let is_jumping = false;
 
 let velocity = new THREE.Vector3(0, 0, 0);
 
@@ -40,8 +43,10 @@ bl.scene.add(YXgridHelperB);
 YXgridHelperA.position.set(0, 5, -6.5);
 YXgridHelperB.position.set(0, 5, 2);
 
+let orientationTarget : number = 0;
+let orientation : number = 0;
+
 const movement = ({dt, entities} : any) => {
-    
 
     if (bl.controls.GetKey("d")) {
         velocity.x = SPEED;
@@ -59,23 +64,39 @@ const movement = ({dt, entities} : any) => {
         velocity.z = SPEED;
     }
 
-    if (bl.controls.GetKey("e")) {
-        player.rotation.y -= dt * SPEED;
-    }
+    if (!is_rotating) {
+        if (bl.controls.GetKey("e")) {
+            is_rotating = true;
+            orientationTarget = orientationTarget - Math.PI/2;
+        }
+    
+        if (bl.controls.GetKey("q")) {
+            is_rotating = true;
+            console.log("before", orientationTarget);
+            orientationTarget = orientationTarget + Math.PI/2;
+            console.log("after", orientationTarget);
+        }
+    } else {
 
-    if (bl.controls.GetKey("q")) {
-        player.rotation.y += dt * SPEED;
-    }
+        // if we are rotating
+        orientation = LerpAngle(orientation, orientationTarget, dt * ROTATION_SPEED);
+        
+        if ( Math.abs( orientationTarget - orientation) < 0.01 ) {
+            orientation = orientationTarget;
+        }
 
-    if (bl.controls.GetKey(" ")) {
-        if ( !(player.position.y > 0 ) && !(IS_JUMPING) ) {
-            velocity.y = 20;
-            IS_JUMPING = true;
+        player.rotation.y = orientation;
+        
+        if (player.rotation.y === orientationTarget) {
+            is_rotating = false;
         }
     }
 
-    if (!IS_JUMPING) {
-        player.position.y = h.desiredHeight;
+    if (bl.controls.GetKey(" ")) {
+        if ( !(player.position.y > 0 ) && !(is_jumping) ) {
+            velocity.y = 20;
+            is_jumping = true;
+        }
     }
     
     player.position.x += velocity.x * dt;
@@ -131,8 +152,8 @@ const movement = ({dt, entities} : any) => {
     bl.camera.position.z = player.position.z + 10;
     bl.camera.position.x = player.position.x;
 
-    if (IS_JUMPING && ( velocity.y < -1 ) && player.position.y === 0 ) {
-        IS_JUMPING = false;
+    if (is_jumping && ( velocity.y < -1 ) && player.position.y === 0 ) {
+        is_jumping = false;
     }
 
 

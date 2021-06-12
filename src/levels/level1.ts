@@ -47,5 +47,6 @@ const level1 : Level = {
         new THREE.Vector3(0,2,0),
         new THREE.Vector3(0,3,0),
     ],
-}
+};
+
 export default level1;

@@ -39,3 +39,32 @@ export function worldToGroup( pos : THREE.Vector3 ) : THREE.Vector3 {
 
     return p;
 }
+
+export function LerpAngle(start : number, end : number, amount : number) {
+    let difference = Math.abs(end - start);
+    if (difference > Math.PI)
+    {
+        // We need to add on to one of the values.
+        if (end > start)
+        {
+            // We'll add it on to start...
+            start += 2 * Math.PI;
+        }
+        else
+        {
+            // Add it on to end.
+            end += 2 * Math.PI;
+        }
+    }
+
+    // Interpolate it.
+    let value = (start + ((end - start) * amount));
+
+    // Wrap it..
+    let rangeZero = 2 * Math.PI;
+
+    if (value >= 0 && value <= 2 * Math.PI)
+        return value;
+
+    return value;
+}

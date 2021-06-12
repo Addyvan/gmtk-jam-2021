@@ -45,7 +45,7 @@ const transitionIn = () => {
         elem.style.display = "block";
     }
 
-    gameManager.timer = new Timer(1);
+    gameManager.timer = new Timer(0.25);
 
     scene.add(gameManager.currentReference);
 }
