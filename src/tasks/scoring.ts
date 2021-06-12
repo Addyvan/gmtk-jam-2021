@@ -10,12 +10,12 @@ function rotate(pos:THREE.Vector3,theta:number){
     return pos;
 }
 
-function scoring(voxels:Array<Array<number>>) : number {
+function scoring(voxels: Array<THREE.Vector3>) : number {
     let fscore: number = 0;
     for (let nrot=0;nrot<36;nrot++){
         let score: number = 0;
         for (let i=0; i< voxels.length; i++){
-            let voxel = new THREE.Vector3(voxels[i][0],voxels[i][1],voxels[i][2]);
+            let voxel = new THREE.Vector3(voxels[i].x,voxels[i].y,voxels[i].z);
             for (let j=0; j<player.children.length; j++){
                 let shape: any = player.children[j]
                 const box = new THREE.Box3();
