@@ -25,18 +25,15 @@ function scoring(voxels: Array<THREE.Vector3>) : number {
         let score: number = 0;
         for (let i=0; i< voxels.length; i++){
             let voxel = new THREE.Vector3(voxels[i].x,voxels[i].y,voxels[i].z);
-            console.log('voxel',voxel);
             for (let j=0; j<player.children.length; j++){
                 let shape: any = player.children[j]
                 const box = new THREE.Box3();
                 let p1 = shape.position.clone();
                 p1 = rotate(p1,nrot);
-                console.log('p1',p1);
                 let epsilon = 0.1;
                 let x = (p1.x <= voxel.x+epsilon) && (p1.x >= voxel.x-epsilon);
                 let y = (p1.y <= voxel.y+epsilon) && (p1.y >= voxel.y-epsilon);
                 let z = (p1.z <= voxel.z+epsilon) && (p1.z >= voxel.z-epsilon);
-                console.log(x && y && z)
                 score += Number(x && y && z);
             }
         }
@@ -44,6 +41,7 @@ function scoring(voxels: Array<THREE.Vector3>) : number {
             fscore = score;
         }
     }
+    fscore /= 2;
     fscore /= voxels.length;
     return fscore;
 }
