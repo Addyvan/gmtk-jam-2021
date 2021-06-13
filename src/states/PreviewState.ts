@@ -47,7 +47,7 @@ const transitionIn = () => {
 
     console.log(elem);
 
-    gameManager.timer = new Timer(7.5);
+    gameManager.timer = new Timer(1);
 
     scene.add(gameManager.currentReference);
 

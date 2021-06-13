@@ -41,6 +41,9 @@ class GameManager {
     currentLevelIndex : number;
     currentReference : any;
 
+    lastd : number;
+    lasta : number;
+
     base : number = 0;
 
     constructor() {
@@ -56,6 +59,9 @@ class GameManager {
         this.currentReference = voxels2group(this.currentLevel.reference);
 
         this.base = 0;
+
+        this.lastd = this.timer.time;
+        this.lasta = this.timer.time;
     
     }
 

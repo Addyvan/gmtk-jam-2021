@@ -4,7 +4,7 @@ import Level from "./levelInterface";
 const level2 : Level = {
     passScore: 1,
     color: 0xd600ff,
-    time: 25,
+    time: 16.5,
     shapes: [
         {
             type: "cube",

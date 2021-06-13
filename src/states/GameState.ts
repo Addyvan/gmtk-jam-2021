@@ -96,6 +96,8 @@ export const render = () => {
 }
 
 const transitionIn = () => {
+    gameManager.lastd = 0;
+    gameManager.lasta = 0;
 
     player.position.set(0,0,0);
 

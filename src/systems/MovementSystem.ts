@@ -4,12 +4,13 @@ import * as THREE from "three";
 
 import player from "../player";
 import { LerpAngle } from "../utils";
+import gameManager from "../GameManager";
 
 export const h = {
     desiredHeight: 0.5
 }
 
-const SPEED = 5;
+const SPEED = 4.5;
 const GRAVITY = -60;
 const ROTATION_SPEED = 15;
 let is_rotating = false;
@@ -92,13 +93,15 @@ const movement = ({dt, entities} : any) => {
 
     if (bl.controls.GetKey(" ")) {
         if ( !(player.position.y > 0 ) && !(is_jumping) ) {
-            velocity.y = 10;
+            velocity.y = 16;
             is_jumping = true;
         }
     }
     
     player.position.x += velocity.x * dt;
     player.position.z += velocity.z * dt;
+    
+    
     player.position.y = Math.max(player.position.y + velocity.y * dt, 0);
 
     let showGrids = false;
@@ -139,8 +142,8 @@ const movement = ({dt, entities} : any) => {
     }
 
     // deccelerate x,z
-    velocity.x = 0.85 * velocity.x;
-    velocity.z = 0.85 * velocity.z;
+    velocity.x = 0.80 * velocity.x;
+    velocity.z = 0.80 * velocity.z;
 
     // deccelerate
     velocity.y += dt * GRAVITY;
