@@ -122,7 +122,7 @@ const transitionIn = () => {
         elem.style.display = "block";
     }
 
-    scene.add(gameManager.currentReference);
+    // scene.add(gameManager.currentReference);
 
     g2 = new THREE.Group();
     // let modelA = loader.models["level1.glb"].gltf.scene.clone();
@@ -137,14 +137,15 @@ const transitionIn = () => {
     let modelB = loader.models["level1.glb"].gltf.scene.clone();
     modelB.scale.set(3,3,3);
 
-    gameManager.currentReference.position.set(10, 0, 0);
-    g2.add(gameManager.currentReference);
+    let r = gameManager.currentReference.clone();
+    r.position.set(10, 0, 0);
+    g2.add(r);
 
     scene.add(g2);
 
     let scoreElem = document.getElementById("score-number");
     if (scoreElem !== undefined && scoreElem !== null) {
-        scoreElem.innerText = scoring(level1.reference).toString();
+        scoreElem.innerText = ( Math.round(scoring(level1.reference) * 100) ).toString();
     }
         
 }

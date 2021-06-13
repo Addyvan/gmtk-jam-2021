@@ -45,9 +45,9 @@ const initGameState = () => {
     const material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
     const floor = new THREE.Mesh( geometry, material );
 
-    floor.position.y = -5.5;
+    floor.position.y = -5.6;
     
-    bl.scene.add(floor)
+    bl.scene.add(floor);
     
 }
 
@@ -100,6 +100,14 @@ export const render = () => {
 }
 
 const transitionIn = () => {
+
+    player.position.set(0,0,0);
+
+    for (let i = 0; i < gameManager.currentLevel.shapes.length; i++) {
+        gameManager.currentLevel.shapes[i].spawned = false;
+    }
+
+
     // hide ui
     let elem = document.getElementById("game");
     if (elem !== undefined && elem !== null) {
@@ -134,7 +142,7 @@ const transitionIn = () => {
     line.position.set( s.position.x, s.position.y, s.position.z );
     player.add(line);
 
-    
+
 
     gameManager.timer = new Timer(gameManager.currentLevel.time);
 

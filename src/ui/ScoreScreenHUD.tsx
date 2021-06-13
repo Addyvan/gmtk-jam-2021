@@ -14,17 +14,25 @@ const ScoreScreenHUD : React.FC = () => {
                             SUCCESS!
                         </p>
                         <p className="subtitle hud-text">
-                            SCORE: <span id="score-number">xx</span>
+                            SCORE: <span id="score-number">xx</span> %
                         </p>
                     </div>
                 </section>
 
-                <button className="button is-success" onClick={() => {
+                <button id="next-level-button" className="button is-success" onClick={() => {
                     gameManager.setNextLevel();
                     gameManager.transition("score", "preview");
                 }}>
                     NEXT LEVEL
                 </button>
+
+                <button className="button is-error" onClick={() => {
+                    // gameManager.setNextLevel();
+                    gameManager.transition("score", "preview");
+                }}>
+                    RETRY
+                </button>
+
             </div>
         </div>
     );
