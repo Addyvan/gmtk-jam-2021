@@ -41,6 +41,8 @@ class GameManager {
     currentLevelIndex : number;
     currentReference : any;
 
+    base : number = 0;
+
     constructor() {
 
         this.gameState = "preview";
@@ -52,6 +54,8 @@ class GameManager {
         this.currentLevelIndex = 0;
         this.currentLevel = levels[this.currentLevelIndex];
         this.currentReference = voxels2group(this.currentLevel.reference);
+
+        this.base = 0;
     
     }
 

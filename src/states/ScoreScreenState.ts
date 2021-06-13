@@ -129,6 +129,7 @@ const transitionIn = () => {
     // modelA.scale.set(3,3,3);
 
     let p = player.clone();
+    p.rotation.y = 0;
     p.position.set(-10, 0, 0);
     g2.add(p);
     

@@ -122,9 +122,19 @@ const transitionIn = () => {
     }
 
     const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xff0000 } );
+    const material = new THREE.MeshPhongMaterial( { color: 0x0000ff } );
     const s = new THREE.Mesh( geometry, material );
     player.add(s);
+
+    const wireframe = new THREE.WireframeGeometry( geometry );
+    const line : any = new THREE.LineSegments( wireframe );
+    line.material.depthTest = true;
+    line.material.opacity = 1;
+    line.material.transparent = true;
+    line.position.set( s.position.x, s.position.y, s.position.z );
+    player.add(line);
+
+    
 
     gameManager.timer = new Timer(gameManager.currentLevel.time);
 
@@ -142,6 +152,18 @@ const transitionIn = () => {
         }
     } else {
         let elem = document.getElementById("game-tutorial-2");
+        if (elem !== undefined && elem !== null) {
+            elem.style.display = "none";
+        }
+    }
+
+    if (gameManager.currentLevelIndex === 2 ) {
+        let elem = document.getElementById("game-tutorial-3");
+        if (elem !== undefined && elem !== null) {
+            elem.style.display = "block";
+        }
+    } else {
+        let elem = document.getElementById("game-tutorial-3");
         if (elem !== undefined && elem !== null) {
             elem.style.display = "none";
         }

@@ -33,16 +33,20 @@ const spawn = ({dt, entities} : any) => {
 
             s.spawned = true;
 
-            const wireframe = new THREE.WireframeGeometry( geometry );
-            const line : any = new THREE.LineSegments( wireframe );
-            line.material.depthTest = true;
-            line.material.opacity = 1;
-            line.material.transparent = true;
+            let c : number;
 
-            const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xffffff } );
+            switch (s.location.y) {
+                case 0: c = 0x00ff9f; break;
+                case 1: c = 0x00b8ff; break;
+                case 2: c = 0x001eff; break;
+                case 3: c = 0xbd00ff; break;
+                case 4: c = 0xd600ff; break;
+                default: throw Error(`HEIGHT ${s.location.y} not allowed in level! See spawn system code`);
+            } 
+
+            const material = new THREE.MeshPhongMaterial( { color: c } );
             const shape = new THREE.Mesh( geometry, material );
             shape.position.set( s.location.x, s.location.y, s.location.z );
-            line.position.set( s.location.x, s.location.y, s.location.z );
 
             
             bl.scene.add(shape);
