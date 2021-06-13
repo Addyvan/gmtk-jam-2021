@@ -5,11 +5,11 @@ import level4 from "./level4";
 import level5 from "./level5";
 
 const levels = [
-    level5,
+    level3,
     level2,
     level3,
     level4,
-    level1
+    level5
 ]
 
 export default levels;
