@@ -41,10 +41,10 @@ const level3 : Level = {
         },
     ],
     reference: [
+        new THREE.Vector3(-1,0,0),
+        new THREE.Vector3(0,0,0),
+        new THREE.Vector3(0,1,0),
         new THREE.Vector3(1,0,0),
-        new THREE.Vector3(2,0,0),
-        new THREE.Vector3(2,1,0),
-        new THREE.Vector3(3,0,0),
     ],
 };
 

@@ -47,8 +47,9 @@ const App : React.FC = () => {
         <div className="container is-max-desktop is-centered" style={{marginTop: "15vh"}}>
             <section className="hero">
                 <div className="hero-body has-text-centered">
+                    
                     <p className="title hud-text-big">
-                        TO BE NAMED
+                        BLORPH
                     </p>
                     <p className="subtitle hud-text-big">
                         GMTK 2021

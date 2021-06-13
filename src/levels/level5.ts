@@ -9,7 +9,7 @@ const level5 : Level = {
         {
             time: 3,
             location: new THREE.Vector3(0,0,-40),
-            speed: 3,
+            speed: 5,
             type: "cube",
             spec: {width: 1,height: 1},
             spawned: false
@@ -17,7 +17,7 @@ const level5 : Level = {
         {
             time: 4,
             location: new THREE.Vector3(0,0,-40),
-            speed: 3,
+            speed: 5,
             type: "cube",
             spec: {width: 1,height: 1},
             spawned: false
@@ -25,7 +25,7 @@ const level5 : Level = {
         {
             time: 7,
             location: new THREE.Vector3(-3,1,-40),
-            speed: 3,
+            speed: 5,
             type: "cube",
             spec: {width: 1,height: 1},
             spawned: false
@@ -33,7 +33,7 @@ const level5 : Level = {
         {
             time: 8,
             location: new THREE.Vector3(-3,1,-40),
-            speed: 3,
+            speed: 5,
             type: "cube",
             spec: {width: 1,height: 1},
             spawned: false
@@ -41,7 +41,7 @@ const level5 : Level = {
         {
             time: 11,
             location: new THREE.Vector3(3,2,-40),
-            speed: 3,
+            speed: 5,
             type: "cube",
             spec: {width: 1,height: 1},
             spawned: false
@@ -49,7 +49,7 @@ const level5 : Level = {
         {
             time: 12,
             location: new THREE.Vector3(3,2,-40),
-            speed: 3,
+            speed: 5,
             type: "cube",
             spec: {width: 1,height: 1},
             spawned: false
@@ -57,7 +57,7 @@ const level5 : Level = {
         {
             time: 16,
             location: new THREE.Vector3(-3,3,-40),
-            speed: 3,
+            speed: 5,
             type: "cube",
             spec: {width: 1,height: 1},
             spawned: false
@@ -65,7 +65,7 @@ const level5 : Level = {
         {
             time: 17,
             location: new THREE.Vector3(-3,3,-40),
-            speed: 3,
+            speed: 5,
             type: "cube",
             spec: {width: 1,height: 1},
             spawned: false
@@ -74,7 +74,6 @@ const level5 : Level = {
     ],
     reference: [
         new THREE.Vector3(0, 0, 0),
-        new THREE.Vector3(1, 0, 0),
         new THREE.Vector3(0, 1, 0),
         new THREE.Vector3(-1, 1, 0),
         new THREE.Vector3(-1, 2, 0),

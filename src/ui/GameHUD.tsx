@@ -17,7 +17,7 @@ const GameHUD : React.FC = () => {
                 <section id="game-tutorial-1" className="hero" style={{marginTop: "50vh"}}>
                     <div className="hero-body has-text-centered">
                         <p className="title hud-text blink_me">
-                            W - S - A - D
+                            Use W,S,A,D to move around!
                         </p>
                     </div>
                 </section>
