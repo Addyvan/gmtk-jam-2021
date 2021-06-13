@@ -44,7 +44,7 @@ const App : React.FC = () => {
             </div>
         </div>
         :
-        <div className="container is-max-desktop is-centered" style={{marginTop: "20vh"}}>
+        <div className="container is-max-desktop is-centered" style={{marginTop: "15vh"}}>
             <section className="hero">
                 <div className="hero-body has-text-centered">
                     <p className="title hud-text-big">
@@ -101,7 +101,7 @@ const App : React.FC = () => {
                 <div className="column is-one-third">
 
                     <article className="message is-info">
-                        <div className="message-body">
+                        <div className="message-body" style={{fontSize:"1.5em"}}>
                             MADE BY
                             <br />
                             <br />

@@ -1,9 +1,5 @@
 import bl from "blengine";
 import * as THREE from "three";
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 
 import State from "../State";
 import loader from "../loader";
@@ -39,7 +35,7 @@ const initGameState = () => {
     createGrid(bl.scene);
 
     bl.scene.fog = new THREE.FogExp2(0xd600ff, 0.02);
-    bl.scene.background = new THREE.Color('#d600ff');
+    bl.scene.background = new THREE.Color(0xd600ff);
 
     const geometry = new THREE.BoxGeometry(150, 10, 80, 1,1,1);
     const material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
@@ -115,8 +111,8 @@ const transitionIn = () => {
     }
 
     if (gameManager.currentLevelIndex > 0) {
-        bl.scene.fog = new THREE.FogExp2(0x0000ff, 0.02);
-        bl.scene.background = new THREE.Color('#0000ff');
+        bl.scene.fog = new THREE.FogExp2(gameManager.currentLevel.color, 0.02);
+        bl.scene.background = new THREE.Color(gameManager.currentLevel.color);
     }
 
     while (player.children.length > 0) {

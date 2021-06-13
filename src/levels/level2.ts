@@ -1,8 +1,9 @@
 import * as THREE from "three";
 import Level from "./levelInterface";
 
-const level1 : Level = {
+const level2 : Level = {
     passScore: 1,
+    color: 0xd600ff,
     time: 25,
     shapes: [
         {
@@ -35,4 +36,4 @@ const level1 : Level = {
     ],
 };
 
-export default level1;
+export default level2;

@@ -92,7 +92,7 @@ const movement = ({dt, entities} : any) => {
 
     if (bl.controls.GetKey(" ")) {
         if ( !(player.position.y > 0 ) && !(is_jumping) ) {
-            velocity.y = 20;
+            velocity.y = 10;
             is_jumping = true;
         }
     }

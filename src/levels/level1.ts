@@ -3,6 +3,7 @@ import Level from "./levelInterface";
 
 const level1 : Level = {
     passScore: 1,
+    color: 0xd600ff,
     time: 22.5,
     shapes: [ 
         {

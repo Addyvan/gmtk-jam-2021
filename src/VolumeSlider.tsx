@@ -18,14 +18,12 @@ export default function ContinuousSlider() {
         if (window.audioManager === undefined) {
             window.audioManager = new AudioManager();
         }
-
-        console.log();
         
         setValue(newValue);
     };
   
     return (
-      <div className="volumeSlider">    
+      <div className="volumeSlider hud-text" style={{color: "white"}}>    
         <Typography id="continuous-slider" gutterBottom>
           Volume
         </Typography>

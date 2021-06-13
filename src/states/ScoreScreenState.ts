@@ -145,7 +145,7 @@ const transitionIn = () => {
 
     let scoreElem = document.getElementById("score-number");
     if (scoreElem !== undefined && scoreElem !== null) {
-        scoreElem.innerText = ( Math.round(scoring(level1.reference) * 100) ).toString();
+        scoreElem.innerText = ( Math.round(scoring(gameManager.currentLevel.reference) * 100) ).toString();
     }
         
 }

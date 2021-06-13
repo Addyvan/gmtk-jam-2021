@@ -9,6 +9,7 @@ interface ShapeSpawn {
 }
 
 export interface Level {
+    color: number;
     passScore: number;
     time: number;
     shapes: Array<ShapeSpawn>;

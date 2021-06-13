@@ -1,6 +1,6 @@
 from pygltflib import GLTF2
 
-filename = "./level1.glb"
+filename = "./level4.glb"
 gltf = GLTF2().load(filename)
 
 # print(meshes)
