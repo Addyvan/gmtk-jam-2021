@@ -68,3 +68,18 @@ export function LerpAngle(start : number, end : number, amount : number) {
 
     return value;
 }
+
+/**
+ * Given a Vector3, return an array of integers
+ * which can be used to access a voxel in the
+ * voxelGrid
+ */
+export function groupToGrid(pos : THREE.Vector3) {
+
+    let i = Math.round(pos.x);
+    let j = Math.round(pos.y);
+    let k = Math.round(pos.z);
+
+    return [i, j, k];
+
+}

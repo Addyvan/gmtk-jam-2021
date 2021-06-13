@@ -153,6 +153,8 @@ const transitionOut = () => {
     }
     scene.remove(g2);
 
+    player.position.set(0, 0, 0);
+    
     // TODO: remove player stuff
     //player = new THREE.Group();
 }

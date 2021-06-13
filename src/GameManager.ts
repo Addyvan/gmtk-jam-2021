@@ -2,11 +2,11 @@ import * as THREE from "three";
 import bl from "blengine";
 import State from "./State";
 
-import {
-    level1
-} from "./levels";
+import levels from "./levels";
 import voxels2group from "./levels/voxels2group";
 import Level from "./levels/levelInterface";
+
+
 
 export class Timer {
 
@@ -38,18 +38,20 @@ class GameManager {
     timer : Timer;
     
     currentLevel : Level;
+    currentLevelIndex : number;
     currentReference : any;
 
     constructor() {
+
         this.gameState = "preview";
 
         this.timer = new Timer(1);
 
-        this.states = {}
+        this.states = {};
 
-        this.currentLevel = level1;
-        this.currentReference = voxels2group(level1.reference);
-
+        this.currentLevelIndex = 0;
+        this.currentLevel = levels[this.currentLevelIndex];
+        this.currentReference = voxels2group(this.currentLevel.reference);
     
     }
 
@@ -71,7 +73,14 @@ class GameManager {
     }
 
     setNextLevel() : void {
+        this.currentLevelIndex++;
 
+        if (this.currentLevelIndex >= levels.length) {
+            throw Error("Congrats! YOu beat the game!");
+        }
+
+        this.currentLevel = levels[this.currentLevelIndex];
+        this.currentReference = voxels2group(this.currentLevel.reference);
     }
 
     update(dt : number) {
