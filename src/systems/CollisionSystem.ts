@@ -30,8 +30,11 @@ const collisions = ({dt, entities} : any) => {
                 shapeB.geometry.computeBoundingBox();
                 boxA.copy(shapeA.geometry.boundingBox).applyMatrix4(shapeA.matrixWorld);
                 boxB.copy(shapeB.geometry.boundingBox).applyMatrix4(shapeB.matrixWorld);
+                let posA = shapeA.position.clone();
+                let posB = shapeB.position.clone();
 
-                collided = box_box(boxA, boxB);
+                let res: any = box_box(boxA, boxB, posA, posB);
+                collided = res[0];
                 
             }
 
