@@ -48,7 +48,7 @@ const App : React.FC = () => {
             <section className="hero">
                 <div className="hero-body has-text-centered">
                     <p className="title hud-text-big">
-                        SPACE DICKS
+                        TO BE NAMED
                     </p>
                     <p className="subtitle hud-text-big">
                         GMTK 2021
