@@ -40,9 +40,7 @@ class GameManager {
     currentLevel : Level;
     currentLevelIndex : number;
     currentReference : any;
-
-    lastd : number;
-    lasta : number;
+    is_jumping : boolean;
 
     base : number = 0;
 
@@ -59,9 +57,7 @@ class GameManager {
         this.currentReference = voxels2group(this.currentLevel.reference);
 
         this.base = 0;
-
-        this.lastd = this.timer.time;
-        this.lasta = this.timer.time;
+        this.is_jumping = false;
     
     }
 
@@ -95,7 +91,7 @@ class GameManager {
 
     update(dt : number) {
 
-        if (this.gameState === "mainmenu") {
+        if (this.gameState === "mainmenu" || this.gameState === "end") {
             return;
         }
 

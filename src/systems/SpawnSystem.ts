@@ -39,7 +39,7 @@ const spawn = ({dt, entities} : any) => {
                 case 0: c = 0x00ff9f; break;
                 case 1: c = 0x00b8ff; break;
                 case 2: c = 0x001eff; break;
-                case 3: c = 0xbd00ff; break;
+                case 3: c = 0xBADA55; break;
                 case 4: c = 0xd600ff; break;
                 default: throw Error(`HEIGHT ${s.location.y} not allowed in level! See spawn system code`);
             } 

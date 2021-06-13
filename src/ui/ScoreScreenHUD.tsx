@@ -20,8 +20,14 @@ const ScoreScreenHUD : React.FC = () => {
                 </section>
 
                 <button id="next-level-button" className="button is-success" onClick={() => {
-                    gameManager.setNextLevel();
-                    gameManager.transition("score", "preview");
+                    try {
+                        gameManager.setNextLevel();
+                        gameManager.transition("score", "preview");
+                    } catch {
+                        gameManager.transition("score", "end");
+                    }
+                    
+                    
                 }}>
                     NEXT LEVEL
                 </button>

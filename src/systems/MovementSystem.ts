@@ -14,7 +14,6 @@ const SPEED = 4.5;
 const GRAVITY = -60;
 const ROTATION_SPEED = 15;
 let is_rotating = false;
-let is_jumping = false;
 
 let velocity = new THREE.Vector3(0, 0, 0);
 
@@ -92,9 +91,9 @@ const movement = ({dt, entities} : any) => {
     }
 
     if (bl.controls.GetKey(" ")) {
-        if ( !(player.position.y > 0 ) && !(is_jumping) ) {
+        if ( !(player.position.y > 0 ) && !(gameManager.is_jumping) ) {
             velocity.y = 16;
-            is_jumping = true;
+            gameManager.is_jumping = true;
         }
     }
     
@@ -153,8 +152,8 @@ const movement = ({dt, entities} : any) => {
     bl.camera.position.z = player.position.z + 10;
     bl.camera.position.x = player.position.x;
 
-    if (is_jumping && ( velocity.y < -1 ) && player.position.y === 0 ) {
-        is_jumping = false;
+    if (gameManager.is_jumping && ( velocity.y < -1 ) && player.position.y === 0 ) {
+        gameManager.is_jumping = false;
     }
 
 

@@ -8,6 +8,7 @@ import gameManager from "./GameManager";
 import GameState from "./states/GameState";
 import PreviewState from "./states/PreviewState";
 import ScoreScreenState from "./states/ScoreScreenState";
+import EndState from "./states/EndState";
 
 // tasks
 import loadModels from "./tasks/loadModels";
@@ -31,6 +32,7 @@ async function main() {
     gameManager.setState("preview", PreviewState);
     PreviewState.transitionIn();
     gameManager.setState("score", ScoreScreenState);
+    gameManager.setState("end", EndState);
 
     update();
 }

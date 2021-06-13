@@ -5,6 +5,7 @@ import "./ui.css";
 import GameHUD from "./GameHUD";
 import PreviewHUD from "./PreviewHUD";
 import ScoreScreenHUD from "./ScoreScreenHUD";
+import EndHUD from "./EndHUD";
 
 const UI : React.FC = () => {
     return(
@@ -13,6 +14,7 @@ const UI : React.FC = () => {
             <GameHUD />
             <PreviewHUD />
             <ScoreScreenHUD />
+            <EndHUD />
 
         </>
     );

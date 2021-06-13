@@ -122,6 +122,10 @@ const collisions = ({dt, entities} : any) => {
                             // trigger *zip* sounds
                             window.audioManager.startTrack("collide");
                             
+                            if (gameManager.is_jumping) {
+                                console.log(shapeA.position, p);
+                            }
+
                             if (p[1] < gameManager.base) {
                                 for (let i =0; i < player.children.length; i++) {
                                     player.children[i].position.y += 1;
