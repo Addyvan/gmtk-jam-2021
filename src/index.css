@@ -10,6 +10,10 @@ body {
 -ms-overflow-style: none;
 }
 
+html {
+    background-color: black;
+}
+
 body {
     margin: 0;
 }

@@ -33,9 +33,17 @@ const spawn = ({dt, entities} : any) => {
 
             s.spawned = true;
 
+            const wireframe = new THREE.WireframeGeometry( geometry );
+            const line : any = new THREE.LineSegments( wireframe );
+            line.material.depthTest = true;
+            line.material.opacity = 1;
+            line.material.transparent = true;
+
             const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xffffff } );
             const shape = new THREE.Mesh( geometry, material );
             shape.position.set( s.location.x, s.location.y, s.location.z );
+            line.position.set( s.location.x, s.location.y, s.location.z );
+
             
             bl.scene.add(shape);
             let e = ecs.CreateEntity();

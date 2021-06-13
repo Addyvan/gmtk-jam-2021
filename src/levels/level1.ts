@@ -3,7 +3,7 @@ import Level from "./levelInterface";
 
 const level1 : Level = {
     passScore: 1,
-    time: 20,
+    time: 15,
     shapes: [ 
         {
             type: "cube",
@@ -11,8 +11,8 @@ const level1 : Level = {
                 width: 1,
                 height: 1
             },
-            location: new THREE.Vector3(0,1,-40),
-            time: 1,
+            location: new THREE.Vector3(0,0,-40),
+            time: 5,
             speed: 1,
             spawned: false
         },
@@ -22,9 +22,9 @@ const level1 : Level = {
                 width: 1,
                 height: 1
             },
-            location: new THREE.Vector3(0,1,-40),
-            time: 4,
-            speed: 2,
+            location: new THREE.Vector3(0,0,-40),
+            time: 8,
+            speed: 1,
             spawned: false
         },
         {
@@ -33,7 +33,7 @@ const level1 : Level = {
                 width: 1,
                 height: 1
             },
-            location: new THREE.Vector3(0,1,-40),
+            location: new THREE.Vector3(0,0,-40),
             time: 10,
             speed: 3,
             spawned: false
@@ -43,9 +43,7 @@ const level1 : Level = {
         new THREE.Vector3(0,0,0),
         new THREE.Vector3(1,0,0),
         new THREE.Vector3(2,0,0),
-        new THREE.Vector3(0,1,0),
-        new THREE.Vector3(0,2,0),
-        new THREE.Vector3(0,3,0),
+        new THREE.Vector3(2,0,1),
     ],
 };
 

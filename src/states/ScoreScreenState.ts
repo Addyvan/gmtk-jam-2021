@@ -35,8 +35,8 @@ const initScoreScreenState = () => {
 
     createLights(scene);
     
-    renderText("Your Model", new THREE.Vector3(-10, 8, 0), 0.01, g2, container, "t1");
-    renderText("Reference Model", new THREE.Vector3(10, 8, 0), 0.01, g2, container, "t2");
+    renderText("Your Attempt", new THREE.Vector3(-10, 8, 0), 0.01, g2, container, "t1");
+    renderText("Goal", new THREE.Vector3(10, 8, 0), 0.01, g2, container, "t2");
     
     scene.add(g2);
 }
@@ -44,6 +44,7 @@ const initScoreScreenState = () => {
 const update = (dt : number) => {
 
     // g2.rotation.y += dt / 5;
+    camera.position.y = Math.max(0.01, camera.position.y);
 
     if (container["t1"] !== undefined) {
         // container["t1"].lookAt(camera);
@@ -126,8 +127,10 @@ const transitionIn = () => {
     g2 = new THREE.Group();
     // let modelA = loader.models["level1.glb"].gltf.scene.clone();
     // modelA.scale.set(3,3,3);
-    player.position.set(-10, 0, 0);
-    g2.add(player);
+
+    let p = player.clone();
+    p.position.set(-10, 0, 0);
+    g2.add(p);
     
 
     let modelB = loader.models["level1.glb"].gltf.scene.clone();
@@ -153,8 +156,11 @@ const transitionOut = () => {
     }
     scene.remove(g2);
 
-    player.position.set(0, 0, 0);
     
+    player.children.forEach((c : any) => {
+        player.remove(c);
+    });
+
     // TODO: remove player stuff
     //player = new THREE.Group();
 }

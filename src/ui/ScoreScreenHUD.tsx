@@ -4,7 +4,7 @@ import gameManager from "../GameManager";
 
 const ScoreScreenHUD : React.FC = () => {
     return(
-        <div id="score">
+        <div id="score" style={{display: "none"}}>
 
             <div className="container is-max-desktop has-text-centered">
                 

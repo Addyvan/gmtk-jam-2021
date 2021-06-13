@@ -11,7 +11,7 @@ const level1 : Level = {
                 width: 1,
                 height: 1
             },
-            location: new THREE.Vector3(0,1,-40),
+            location: new THREE.Vector3(0,0,-20),
             time: 1,
             speed: 1,
             spawned: false
@@ -22,7 +22,7 @@ const level1 : Level = {
                 width: 1,
                 height: 1
             },
-            location: new THREE.Vector3(0,1,-40),
+            location: new THREE.Vector3(0,0,20),
             time: 4,
             speed: 2,
             spawned: false

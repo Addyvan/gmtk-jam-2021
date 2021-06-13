@@ -45,9 +45,18 @@ const transitionIn = () => {
         elem.style.display = "block";
     }
 
-    gameManager.timer = new Timer(0.25);
+    console.log(elem);
+
+    gameManager.timer = new Timer(7.5);
 
     scene.add(gameManager.currentReference);
+
+    if (gameManager.currentLevelIndex > 0) {
+        let elem = document.getElementById("preview-tutorial");
+        if (elem !== undefined && elem !== null) {
+            elem.style.display = "none";
+        }
+    }
 }
 
 const transitionOut = () => {

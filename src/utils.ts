@@ -80,6 +80,7 @@ export function groupToGrid(pos : THREE.Vector3) {
     let j = Math.round(pos.y);
     let k = Math.round(pos.z);
 
+
     return [i, j, k];
 
 }

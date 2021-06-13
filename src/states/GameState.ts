@@ -23,6 +23,7 @@ import {
     darkenNonBloomed,
     restoreMaterial
 } from "../postprocessing";
+import player from "../player";
 
 const initGameState = () => {
     
@@ -44,25 +45,45 @@ const initGameState = () => {
     const material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
     const floor = new THREE.Mesh( geometry, material );
 
-    floor.position.y = -5;
+    floor.position.y = -5.5;
     
     bl.scene.add(floor)
     
 }
 
-
+let TUTORIAL1 = true;
+let TUTORIAL2 = true;
 
 const update = (dt : number) => {
-    
-    let elem : any = document.getElementById("game-timer");
-    if (elem !== undefined && elem !== null) {
-        elem.value = ((gameManager.timer.end - gameManager.timer.time) / gameManager.timer.end) * 100;
-    }
     
     MovementSystem.update(dt);
     CollisionSystem.update(dt);
     ShapeMovementSystem.update(dt);
     SpawnSystem.update(dt);
+
+    if (gameManager.currentLevelIndex === 0) {
+        if (TUTORIAL1) {
+            if (gameManager.timer.time > 10) {
+                let elem = document.getElementById("game-tutorial-1");
+                if (elem !== undefined && elem !== null) {
+                    elem.style.display = "none";
+                }
+                TUTORIAL1 = false;
+            }
+        }
+    }
+
+    if (gameManager.currentLevelIndex === 1) {
+        if (TUTORIAL2) {
+            if (gameManager.timer.time > 10) {
+                let elem = document.getElementById("game-tutorial-2");
+                if (elem !== undefined && elem !== null) {
+                    elem.style.display = "none";
+                }
+                TUTORIAL2 = false;
+            }
+        }
+    }
 
 }
 
@@ -84,7 +105,47 @@ const transitionIn = () => {
     if (elem !== undefined && elem !== null) {
         elem.style.display = "block";
     }
+
+    if (gameManager.currentLevelIndex > 0) {
+        bl.scene.fog = new THREE.FogExp2(0x0000ff, 0.02);
+        bl.scene.background = new THREE.Color('#0000ff');
+    }
+
+    while (player.children.length > 0) {
+        for (let i = 0; i < player.children.length; i++) {
+            player.remove(player.children[i]);
+        }
+    }
+    
+    if ( player.children.length > 0 ) {
+        throw new Error("FUCK");
+    }
+
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xff0000 } );
+    const s = new THREE.Mesh( geometry, material );
+    player.add(s);
+
     gameManager.timer = new Timer(gameManager.currentLevel.time);
+
+    if (gameManager.currentLevelIndex > 0) {
+        let elem = document.getElementById("game-tutorial-1");
+        if (elem !== undefined && elem !== null) {
+            elem.style.display = "none";
+        }
+    }
+
+    if (gameManager.currentLevelIndex === 1 ) {
+        let elem = document.getElementById("game-tutorial-2");
+        if (elem !== undefined && elem !== null) {
+            elem.style.display = "block";
+        }
+    } else {
+        let elem = document.getElementById("game-tutorial-2");
+        if (elem !== undefined && elem !== null) {
+            elem.style.display = "none";
+        }
+    }
 
 }
 
@@ -94,6 +155,7 @@ const transitionOut = () => {
     if (elem !== undefined && elem !== null) {
         elem.style.display = "none";
     }
+
 }
 
 const GameState = new State(

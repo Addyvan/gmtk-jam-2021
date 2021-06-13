@@ -72,9 +72,7 @@ const movement = ({dt, entities} : any) => {
     
         if (bl.controls.GetKey("q")) {
             is_rotating = true;
-            console.log("before", orientationTarget);
             orientationTarget = orientationTarget + Math.PI/2;
-            console.log("after", orientationTarget);
         }
     } else {
 

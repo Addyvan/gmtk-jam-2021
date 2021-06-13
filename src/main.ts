@@ -20,17 +20,10 @@ async function main() {
     createLights(bl.scene);
 
 
-    bl.camera.position.z = 15;
-    bl.camera.position.y = 7.5;
+    bl.camera.position.z = 10;
+    bl.camera.position.y = 5;
 
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshPhongMaterial( { color: Math.random() * 0xff0000 } );
-    const s = new THREE.Mesh( geometry, material );
-    
-    player.add(s);
     bl.scene.add(player);
-
-    s.position.set(0, 0.5, 0);
 
     bl.camera.lookAt(0,0,0);
 
